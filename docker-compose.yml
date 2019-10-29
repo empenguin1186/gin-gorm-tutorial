@@ -1,0 +1,13 @@
+version: '2.0'
+
+services:
+  db:
+    image: postgres:9.6.7-alpine
+    volumes:
+      - ./docker/pg:/var/lib/postgresql
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: passw0rd
+      POSTGRES_DB: gorm
+    ports:
+      - '5433:5432'
