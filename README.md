@@ -3,11 +3,11 @@
 ## 参考資料
 https://qiita.com/advent-calendar/2018/gopherdojo
 
-##　学んだこと
+## 学んだこと
 
 ### gin による簡単なAPIの作成
 
-localhost：8080/ にアクセスすると Hello World を表示するアプリケーションは以下の通り。
+localhost：8080/ にアクセスすると Hello World を表示するアプリケーションは以下の通り。
 
 ```go
 func main() {

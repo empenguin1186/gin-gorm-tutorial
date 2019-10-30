@@ -1,4 +1,4 @@
-package service
+package user
 
 import (
 	"github.com/empenguin1186/gin-gorm-tutorial/db"

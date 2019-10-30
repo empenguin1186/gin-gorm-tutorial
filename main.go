@@ -1,16 +1,20 @@
 package main
 
 import (
+	"github.com/cihub/seelog"
 	"github.com/empenguin1186/gin-gorm-tutorial/db"
-	"github.com/gin-gonic/gin"
+	"github.com/empenguin1186/gin-gorm-tutorial/server"
 )
 
 func main() {
-	r := gin.Default()
-	r.GET("/", func(c *gin.Context) {
-		c.String(200, "Hello, World")
-	})
+
+	// ロガー設定
+	logger, err := seelog.LoggerFromConfigAsFile("seelog.xml")
+	if err != nil {
+		panic(err)
+	}
+	seelog.ReplaceLogger(logger)
 	db.Init()
-	r.Run()
+	server.Init()
 	db.Close()
 }
