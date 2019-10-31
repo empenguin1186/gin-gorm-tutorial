@@ -17,6 +17,8 @@ type UserRepository interface {
 
 type UserRepoitoryPostgre struct{}
 
+func NewUserRepositoryPostgre() {}
+
 func (repository *UserRepoitoryPostgre) FindAll() ([]User, error) {
 	db := db.GetDB()
 	var u []User
