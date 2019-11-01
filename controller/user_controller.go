@@ -11,6 +11,10 @@ type Controller struct {
 	service user.Service
 }
 
+func NewController(s user.Service) Controller {
+	return Controller{service: s}
+}
+
 // Index action: GET /users
 func (pc Controller) Index(c *gin.Context) {
 	// var s user.Service
