@@ -4,7 +4,7 @@ type UserRepoitoryOnMemory struct {
 	users []User
 }
 
-func NewUserReposoitoryOnMemory() UserRepoitoryOnMemory {
+func NewUserRepositoryOnMemory() UserRepoitoryOnMemory {
 	return UserRepoitoryOnMemory{users: []Users{}}
 }
 
@@ -29,7 +29,7 @@ func (u *UserRepoitoryOnMemory) Create(user User) error {
 func (u *UserRepoitoryOnMemory) Update(id string, user User) error {
 	for i, e := range users {
 		if e.id == id {
-			users[i] = user
+			users = append(users[:i], e, users[i+1:])
 			return nil
 		}
 	}
