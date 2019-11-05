@@ -1,4 +1,4 @@
-package user
+package controller
 
 import (
 	"github.com/cihub/seelog"
@@ -9,6 +9,10 @@ import (
 // Controller is user controller
 type Controller struct {
 	service user.Service
+}
+
+func NewController(s user.Service) Controller {
+	return Controller{service: s}
 }
 
 // Index action: GET /users
