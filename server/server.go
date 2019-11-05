@@ -1,8 +1,9 @@
 package server
 
 import (
-	user "github.com/empenguin1186/gin-gorm-tutorial/controller"
+	"github.com/empenguin1186/gin-gorm-tutorial/controller"
 	"github.com/empenguin1186/gin-gorm-tutorial/repository"
+	"github.com/empenguin1186/gin-gorm-tutorial/service"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,9 +17,9 @@ func router() *gin.Engine {
 
 	u := r.Group("/users")
 	{
-		repository := repository.NewUserRepositoryOnMemory()
-		service := user.NewService(repository)
-		ctrl := user.NewController(service)
+		r := repository.NewUserRepositoryOnMemory()
+		s := service.NewService(r)
+		ctrl := controller.NewController(s)
 
 		u.GET("", ctrl.Index)
 		u.GET("/:id", ctrl.Show)

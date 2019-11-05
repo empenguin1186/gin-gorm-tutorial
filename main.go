@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/cihub/seelog"
-	"github.com/empenguin1186/gin-gorm-tutorial/db"
 	"github.com/empenguin1186/gin-gorm-tutorial/server"
 )
 
@@ -14,7 +13,7 @@ func main() {
 		panic(err)
 	}
 	seelog.ReplaceLogger(logger)
-	db.Init()
+	// db.Init()
 	server.Init()
-	db.Close()
+	// db.Close()
 }

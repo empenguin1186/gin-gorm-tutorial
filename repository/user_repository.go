@@ -2,10 +2,10 @@ package repository
 
 import (
 	"github.com/empenguin1186/gin-gorm-tutorial/db"
-	"github.com/empenguin1186/gin-gorm-tutorial/entity"
+	. "github.com/empenguin1186/gin-gorm-tutorial/entity"
 )
 
-type User entity.User
+// type User entity.User
 
 type UserRepository interface {
 	FindAll() ([]User, error)
@@ -27,7 +27,7 @@ func (repository *UserRepoitoryPostgre) FindAll() ([]User, error) {
 		return nil, err
 	}
 
-	return u, err
+	return u, nil
 }
 
 func (repository *UserRepoitoryPostgre) FindOne(id string) (User, error) {
@@ -41,7 +41,7 @@ func (repository *UserRepoitoryPostgre) FindOne(id string) (User, error) {
 
 func (repository *UserRepoitoryPostgre) Create(u User) error {
 	db := db.GetDB()
-	if db.Create(&u).Error; err != nil {
+	if err := db.Create(&u).Error; err != nil {
 		return err
 	}
 	return nil

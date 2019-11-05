@@ -1,22 +1,18 @@
-package user
+package service
 
 import (
-	"github.com/empenguin1186/gin-gorm-tutorial/db"
-	"github.com/empenguin1186/gin-gorm-tutorial/entity"
-	"github.com/empenguin1186/gin-gorm-tutorial/repository"
+	. "github.com/empenguin1186/gin-gorm-tutorial/entity"
+	. "github.com/empenguin1186/gin-gorm-tutorial/repository"
 	"github.com/gin-gonic/gin"
 )
 
 type Service struct {
-	Repository repository.UserRepository
+	Repository UserRepository
 }
 
-func NewService(r repository.UserRepository) Service {
+func NewService(r UserRepository) Service {
 	return Service{Repository: r}
 }
-
-// User is alias of entyty.User struct
-type User entity.User
 
 // GetAll is get all User
 func (s Service) GetAll() ([]User, error) {
@@ -34,7 +30,7 @@ func (s Service) GetAll() ([]User, error) {
 
 // CreateModel is create User model
 func (s Service) CreateModel(c *gin.Context) (User, error) {
-	db := db.GetDB()
+	// db := db.GetDB()
 	var u User
 
 	if err := c.BindJSON(&u); err != nil {
@@ -54,7 +50,7 @@ func (s Service) GetByID(id string) (User, error) {
 	// db := db.GetDB()
 	// var u User
 
-	// if err := db.Where("id = ?", id).First(&u).Error; err != nil {
+	// if err := db.Where("id = ?", id).First(&u)].Error; err != nil {
 	// 	return u, err
 	// }
 
@@ -65,7 +61,7 @@ func (s Service) GetByID(id string) (User, error) {
 // UpdateByID is update a User
 func (s Service) UpdateByID(id string, c *gin.Context) (User, error) {
 	// db := db.GetDB()
-	// var u User
+	var u User
 
 	// if err := db.Where("id = ?", id).First(&u).Error; err != nil {
 	// 	return u, err
